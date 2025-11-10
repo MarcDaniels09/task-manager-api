@@ -1,6 +1,6 @@
-import { Router } from 'express';
-
-const router = Router();
+const express = require('express');
+const router = express.Router();
+const packageInfo = require('../package.json');
 
 router.get('/health', (req, res) => {
   res.json({
@@ -12,7 +12,7 @@ router.get('/health', (req, res) => {
 });
 
 router.get('/version', (req, res) => {
-  const { name, version } = require('../package.json');
+  const { name, version } = packageInfo;
   res.json({
     name,
     version,
@@ -20,4 +20,4 @@ router.get('/version', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;
