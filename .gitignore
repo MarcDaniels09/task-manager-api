@@ -1,0 +1,24 @@
+# Node modules and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files (never commit secrets)
+.env
+.env.local
+
+# OS or IDE-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Coverage or build folders
+coverage/
+dist/
+build/
+
+# Temporary files
+*.log
+*.tmp

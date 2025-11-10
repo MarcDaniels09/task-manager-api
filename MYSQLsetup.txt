@@ -1,0 +1,8 @@
+Open command prompt as administrator
+net start MYSQL80
+cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
+mysql -u root -p and enter password "Admin123."
+CREATE DATABASE <"taskdb"or any Database name>;
+USE <"taskdb"or any Database name>;
+SHOW TABLES;
+EXIT;

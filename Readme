@@ -1,0 +1,12 @@
+# 1. Clone & enter
+git clone <your-repo>
+cd task-manager-api
+
+# 2. Install
+npm install
+
+# 3. Setup MySQL DB (create database `taskdb`)
+#    Update .env if needed
+
+# 4. Run
+npm run dev
