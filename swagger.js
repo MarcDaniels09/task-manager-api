@@ -8,12 +8,12 @@ const swaggerDefinition = {
   info: {
     title: 'Task Manager API',
     version: '1.0.0',
-    description: 'A professional Task Manager API with health checks',
+    description: 'A professional Task Manager API with health checks and CRUD endpoints',
   },
   servers: [
     {
-      url: 'http://localhost:5000',
-      description: 'Local server',
+      url: '/', 
+      description: 'Current server (auto-detect)',
     },
   ],
 };
@@ -21,9 +21,10 @@ const swaggerDefinition = {
 // Options for swagger docs
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js', './routes/*.ts', './server.js'], // paths to files with comments
+  apis: ['./routes/*.js', './server.js'], // no need for .ts anymore since all are JS
 };
 
+// Initialize swagger docs
 const swaggerSpec = swaggerJSDoc(options);
 
 module.exports = { swaggerUi, swaggerSpec };
