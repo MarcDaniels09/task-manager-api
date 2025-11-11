@@ -2,6 +2,9 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+// Dynamically detect server base URL
+const serverUrl = process.env.RENDER_EXTERNAL_URL || 'http://localhost:5000';
+
 // Swagger definition
 const swaggerDefinition = {
   openapi: '3.0.0',
@@ -12,8 +15,8 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: '/', 
-      description: 'Current server (auto-detect)',
+      url: serverUrl, 
+      description: process.env.RENDER_EXTERNAL_URL ? 'Render deployment' : 'Local server',
     },
   ],
 };
@@ -21,7 +24,7 @@ const swaggerDefinition = {
 // Options for swagger docs
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js', './server.js'], // no need for .ts anymore since all are JS
+  apis: ['./routes/*.js', './server.js'], 
 };
 
 // Initialize swagger docs
