@@ -1,16 +1,19 @@
-// server.js
 const express = require('express');
 const dotenv = require('dotenv');
-const sequelize = require('./config/db');
+const cors = require('cors');
+const sequelize = require('./api/config/db');          // ← correct path
 const { swaggerUi, swaggerSpec } = require('./swagger');
-const taskRoutes = require('./routes/taskRoutes');
-const healthRoutes = require('./routes/health'); // ✅ Correct one
+const taskRoutes = require('./api/routes/taskRoutes'); // ← correct path
+const healthRoutes = require('./api/routes/health');   // ← correct path
 
 dotenv.config();
 const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Enable CORS for all origins
+app.use(cors());
 
 // Swagger setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

@@ -24,7 +24,7 @@ const swaggerDefinition = {
 // Options for swagger docs
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js', './server.js'], 
+  apis: ['./api/routes/*.js', './server.js'], 
 };
 
 // Initialize swagger docs

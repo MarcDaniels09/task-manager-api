@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const packageInfo = require('../package.json');
+const packageInfo = require('../../package.json');
 
 router.get('/health', (req, res) => {
   res.json({
