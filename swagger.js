@@ -2,29 +2,38 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-// Dynamically detect server base URL
-const serverUrl = process.env.RENDER_EXTERNAL_URL || 'http://localhost:5000';
-
 // Swagger definition
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
     title: 'Task Manager API',
     version: '1.0.0',
-    description: 'A professional Task Manager API with health checks and CRUD endpoints',
+    description: 'A professional Task Manager API with health checks, authentication, and CRUD endpoints',
   },
+  // Relative URL will auto-detect host (local or Render)
   servers: [
     {
-      url: serverUrl, 
-      description: process.env.RENDER_EXTERNAL_URL ? 'Render deployment' : 'Local server',
+      url: '/',
+      description: 'Current server (auto-detect)',
     },
   ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        description: 'Enter your JWT token in the format: Bearer <token>',
+      },
+    },
+  },
+  security: [], // default no security globally; add per-route
 };
 
 // Options for swagger docs
 const options = {
   swaggerDefinition,
-  apis: ['./api/routes/*.js', './server.js'], 
+  apis: ['./api/routes/*.js', './server.js'], // Scan all route files
 };
 
 // Initialize swagger docs

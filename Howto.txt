@@ -1,3 +1,5 @@
+MySQLsetup
+
 Open command prompt as administrator
 net start MYSQL80
 cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
@@ -6,3 +8,10 @@ CREATE DATABASE <"taskdb"or any Database name>;
 USE <"taskdb"or any Database name>;
 SHOW TABLES;
 EXIT;
+
+Swagger Get command
+
+after successful login.
+copy the token given
+use it to unlock user profile in the get user profile
+press enter 

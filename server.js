@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const sequelize = require('./api/config/db');          // ← correct path
 const { swaggerUi, swaggerSpec } = require('./swagger');
+const authRoutes = require('./api/routes/authRoutes');
+const transactionRoutes = require('./api/routes/transactionRoutes');
 const taskRoutes = require('./api/routes/taskRoutes'); // ← correct path
 const healthRoutes = require('./api/routes/health');   // ← correct path
 
@@ -36,6 +38,10 @@ app.get('/', (req, res) => {
 
 // Task routes
 app.use('/tasks', taskRoutes);
+
+// Auth and Transaction routes
+app.use('/api/auth', authRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // Catch-all for undefined routes
 app.all(/.*/, (req, res) => {
